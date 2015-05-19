@@ -12,4 +12,10 @@
   <% end %>
 </ul>
 
-<%= javascript_include_tag runner_name, debug: true %>
+<%#= javascript_include_tag runner_name, debug: true %>
+
+<% runner.to_a.each do |a| %>
+  <script src="<%= path_to_javascript(a.logical_path, debug: true) %>"></script>
+<% end %>
+<%= javascript_tag Opal::Processor.load_asset_code(Rails.application.assets, runner.logical_path) %>
+

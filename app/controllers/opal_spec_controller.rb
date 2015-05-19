@@ -4,7 +4,7 @@ require 'pathname'
 
 class OpalSpecController < ActionController::Base
   helper_method :spec_files, :pattern, :clean_spec_path, :runner_name
-  helper_method :check_errors_for
+  helper_method :check_errors_for, :builder
 
   def run
     logical_path = builder.runner_logical_path
@@ -18,6 +18,7 @@ class OpalSpecController < ActionController::Base
     unless written_to_disk == builder.main_code
       raise "Something's wrong: written_to_disk: #{written_to_disk.inspect}"
     end
+    render locals: { runner: sprockets.find_asset(logical_path) || raise("can't find asset #{logical_path}") }
   end
 
 

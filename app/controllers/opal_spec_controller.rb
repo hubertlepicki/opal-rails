@@ -18,8 +18,8 @@ class OpalSpecController < ActionController::Base
     unless written_to_disk == builder.main_code
       raise "Something's wrong: written_to_disk: #{written_to_disk.inspect}"
     end
-    runner_asset = sprockets.load "file://#{runner.to_s}?type=application/javascript"
-    # runner_asset = sprockets.find_asset(logical_path) || raise("can't find asset #{logical_path}")
+    runner_asset = sprockets.load "file://#{runner.to_s}?type=application/javascript" or raise("can't find asset #{logical_path}")
+    # runner_asset = sprockets.find_asset(logical_path) or raise("can't find asset #{logical_path}")
     render locals: { runner: runner_asset}
   end
 

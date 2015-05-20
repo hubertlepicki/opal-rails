@@ -23,7 +23,7 @@ class OpalSpecController < ActionController::Base
     runner_asset or raise("can't find asset #{logical_path}")
     runner_code = []
     runner_code << sprockets.load(runner_asset.included.last).to_s
-    runner_code << Opal::Processor.load_asset_code(sprockets, runner.logical_path)
+    runner_code << Opal::Processor.load_asset_code(sprockets, logical_path)
     render locals: { runner: runner_asset, runner_code: runner_code }
   end
 

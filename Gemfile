@@ -7,7 +7,7 @@ gem 'capybara-webkit'
 # gem 'opal-rspec',  path: '../opal-rspec'
 # gem 'opal-jquery', path: '../opal-jquery'
 
-gem 'opal',        github: 'opal'
+gem 'opal',        github: 'opal', branch: 'elia/opal-rails-travis-debug'
 gem 'opal-rspec',  github: 'opal/opal-rspec'
 gem 'opal-jquery', github: 'opal/opal-jquery'
 

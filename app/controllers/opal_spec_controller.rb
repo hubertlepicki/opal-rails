@@ -24,7 +24,7 @@ class OpalSpecController < ActionController::Base
     runner_code = []
     runner_code << sprockets.load(runner_asset.included.last).to_s
     runner_code << Opal::Processor.load_asset_code(sprockets, logical_path)
-    render locals: { runner: runner_asset, runner_code: runner_code }
+    render locals: { runner: runner_asset, runner_code: runner_code.join(';') }
   end
 
 

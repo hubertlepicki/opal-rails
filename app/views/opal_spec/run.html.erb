@@ -18,5 +18,4 @@
   <script src="<%= path_to_javascript(a.logical_path, debug: true) %>"></script>
 <% end %>
 <%= javascript_tag runner_code %>
-<%= javascript_tag Opal::Processor.load_asset_code(sprockets, runner.logical_path) %>
 

@@ -13,9 +13,10 @@
 </ul>
 
 <%#= javascript_include_tag runner_name, debug: true %>
-
-<% runner.to_a.each do |a| %>
+<% sprockets = Rails.application.assets %>
+<% runner.included[0...-1].map { |uri| sprockets.load(uri) }.each do |a| %>
   <script src="<%= path_to_javascript(a.logical_path, debug: true) %>"></script>
 <% end %>
-<%= javascript_tag Opal::Processor.load_asset_code(Rails.application.assets, runner.logical_path) %>
+<%= javascript_tag runner_code %>
+<%= javascript_tag Opal::Processor.load_asset_code(sprockets, runner.logical_path) %>
 
